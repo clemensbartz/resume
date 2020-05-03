@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~     Resume
+  ~     Copyright (C) 2020  Clemens Bartz
+  ~
+  ~     This program is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU General Public License as published by
+  ~     the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     This program is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>de.clemensbartz.mps</groupId>
+    <artifactId>resume</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>Resume</name>
+    <description>An MPS language for defining resumes/CVs.</description>
+    <inceptionYear>2020</inceptionYear>
+    <url>http://clemensbartz.de/sixwins</url>
+
+    <developers>
+        <!-- Specify all people who have written one line of code. -->
+        <developer>
+            <name>Clemens Bartz</name>
+            <email>clemens@clemens-bartz.de</email>
+            <url>https://www.clemens-bartz.de</url>
+            <roles>
+                <role>Project Lead</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <issueManagement>
+        <!-- Specify url where to report issues. -->
+        <system>GitHub Issues</system>
+        <url>https://github.com/clemensbartz/resume/issues</url>
+    </issueManagement>
+
+    <scm>
+        <!-- Specify url where to find the code. -->
+        <developerConnection>scm:git@github.com:clemensbartz/resume.git</developerConnection>
+        <url>https://github.com/clemensbartz/resume</url>
+    </scm>
+
+    <ciManagement>
+        <!-- Specifiy where artifact is built. -->
+        <system>Github Actions</system>
+        <url>https://github.com/clemensbartz/resume/actions</url>
+    </ciManagement>
+
+    <licenses>
+        <!-- Generate the license. -->
+        <license>
+            <name>GNU GENERAL PUBLIC LICENSE, Version 3</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
+        </license>
+    </licenses>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-compile</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>default-testCompile</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-resources</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>default-testResources</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M4</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-test</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-jar</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${maven.multiModuleProjectDirectory}</directory>
+                            <includes>
+                                <include>**/classes_gen/**</include>
+                                <include>**/source_gen/**</include>
+                                <include>**/source_gen.caches/**</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <configuration>
+                    <rules>
+                        <requireMavenVersion>
+                            <version>3.3.1</version>
+                        </requireMavenVersion>
+                    </rules>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <phase>validate</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
